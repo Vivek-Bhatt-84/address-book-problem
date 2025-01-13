@@ -1,4 +1,4 @@
 # address-book-problem
 
-## **Use-Case `2` : Ability to add a new Contact to Address Book**
-- This program create contact with specified details . 
+## **Use-Case `3` : Ability to edit a specific contact**
+- This program edit contact with specified details . 
