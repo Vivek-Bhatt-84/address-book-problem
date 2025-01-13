@@ -115,62 +115,84 @@ public:
 
 int main()
 {
-    cout << "Welcome to Address-Book-Problem" << endl;
+    AddressBook addressBook;
+    cout << "Welcome to Address Book" << endl;
 
-    string fName, lName, addr, cty, st, zp, phone, mail;
+    while (true)
+    {
+        cout << "\nChoose an option:" << endl;
+        cout << "1. Add a new contact" << endl;
+        cout << "2. Display all contacts" << endl;
+        cout << "3. Edit a contact" << endl;
+        cout << "4. Delete a contact" << endl;
+        cout << "5. Exit" << endl;
 
-    cout << "Enter First Name" << endl;
-    cin >> fName;
+        int choice;
+        cin >> choice;
 
-    cout << "Enter Last Name" << endl;
-    cin >> lName;
-    cin.ignore();
+        if (choice == 1)
+        {
+            string fName, lName, addr, cty, st, zp, phone, mail;
 
-    cout << "Enter Address: " << endl;
-    getline(cin, addr);
+            cout << "Enter First Name: ";
+            cin >> fName;
 
-    cout << "Enter City: ";
-    getline(cin, cty);
+            cout << "Enter Last Name: ";
+            cin >> lName;
+            cin.ignore();
 
-    cout << "Enter State: ";
-    getline(cin, st);
+            cout << "Enter Address: ";
+            getline(cin, addr);
 
-    cout << "Enter Zip Code: ";
-    cin >> zp;
+            cout << "Enter City: ";
+            getline(cin, cty);
 
-    cout << "Enter Phone Number: ";
-    cin >> phone;
+            cout << "Enter State: ";
+            getline(cin, st);
 
-    cout << "Enter Email: ";
-    cin >> mail;
+            cout << "Enter Zip Code: ";
+            cin >> zp;
 
-    // create new Contact
-    Contact newContact(fName, lName, addr, cty, st, zp, phone, mail);
+            cout << "Enter Phone Number: ";
+            cin >> phone;
 
-    AddressBook addContact;
-    addContact.add(newContact);
+            cout << "Enter Email: ";
+            cin >> mail;
 
-    // display contact from addressbook
-    addContact.displayAll();
+            // Create a new contact
+            Contact newContact(fName, lName, addr, cty, st, zp, phone, mail);
 
-     // Edit an existing contact
-    cout << "\nEnter the phone number of the contact you want to edit: ";
-    string editPhone;
-    cin >> editPhone;
-    addContact.editContact(editPhone);
-
-    // Display all contacts after editing
-    addContact.displayAll();
-
-
-    // Delete a contact
-    cout << "Enter the phone number of the contact you want to delete: ";
-    string deletePhone;
-    cin >> deletePhone;
-    addContact.deleteContact(deletePhone);
-
-    // Display all contacts after deletion
-    addContact.displayAll();
+            // Add contact to address book
+            addressBook.add(newContact);
+        }
+        else if (choice == 2)
+        {
+            addressBook.displayAll();
+        }
+        else if (choice == 3)
+        {
+            cout << "Enter the phone number of the contact you want to edit: ";
+            string editPhone;
+            cin >> editPhone;
+            addressBook.editContact(editPhone);
+        }
+        else if (choice == 4)
+        {
+            cout << "Enter the phone number of the contact you want to delete: ";
+            string deletePhone;
+            cin >> deletePhone;
+            addressBook.deleteContact(deletePhone);
+        }
+        else if (choice == 5)
+        {
+            cout << "Exiting Address Book." << endl;
+            break;
+        }
+        else
+        {
+            cout << "Invalid choice. Please try again!" << endl;
+        }
+    }
 
     return 0;
 }
