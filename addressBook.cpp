@@ -37,10 +37,31 @@ public :
         cout << "State      : " << state << endl;
         cout << "Zip Code   : " << zip << endl;
         cout << "Phone No.  : " << phoneNumber << endl;
-        cout << "Email      : " << email << endl;
-        cout << "-----------------------------------" << endl;
+        cout << "Email      : " << email << endl ;
+        cout << "-----------------------------------" << endl ;
 
     }
+
+};
+
+class AddressBook{
+public:
+        vector<Contact> contacts ;
+
+        void add(Contact& contact){
+            contacts.push_back(contact) ;
+            cout << "Contact added successfully !! " << endl ;
+        }
+
+        void displayAll(){
+            if(contacts.empty()){
+                cout << "No Contacts available..." << endl ;
+            }
+
+            for(auto& c : contacts){
+                c.display();
+            }
+        }
 
 };
 
@@ -55,6 +76,7 @@ int main()
 
     cout << "Enter Last Name" << endl ;
     cin >> lName;
+    cin.ignore();
 
     cout << "Enter Address: " << endl ;
     getline(cin, addr);
@@ -77,8 +99,12 @@ int main()
     // create new Contact 
     Contact newContact(fName, lName, addr, cty, st, zp, phone, mail);
 
-    // display contact
-    newContact.display();
+    AddressBook addContact ;
+    addContact.add(newContact);
+
+    // display contact from addressbook
+    addContact.displayAll();
+   
 
 
     return 0;
