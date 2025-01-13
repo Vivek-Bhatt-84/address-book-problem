@@ -99,6 +99,18 @@ public:
         }
         cout << "Contact with phone number " << phNo << " not found!" << endl;
     }
+
+   void deleteContact(string phNo) {
+    for (auto it = contacts.begin(); it != contacts.end(); ++it) {
+        if (it->phoneNumber == phNo) {
+            contacts.erase(it); 
+            cout << "Contact with phone number " << phNo << " deleted successfully!" << endl;
+            return; 
+        }
+    }
+    cout << "Contact with phone number " << phNo << " not found!" << endl;
+}
+
 };
 
 int main()
@@ -148,6 +160,16 @@ int main()
     addContact.editContact(editPhone);
 
     // Display all contacts after editing
+    addContact.displayAll();
+
+
+    // Delete a contact
+    cout << "Enter the phone number of the contact you want to delete: ";
+    string deletePhone;
+    cin >> deletePhone;
+    addContact.deleteContact(deletePhone);
+
+    // Display all contacts after deletion
     addContact.displayAll();
 
     return 0;
